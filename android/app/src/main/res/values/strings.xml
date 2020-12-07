@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Begin Split dynamic features strings.-->
+    <string name="SplitModuleName">SplitModule</string>
+    <string name="loadingUnit2">SplitModule</string>
+    <!--End Split dynamic features strings.-->
+</resources>
+

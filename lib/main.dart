@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-import 'split_module.dart' deferred as module;
+import 'component1.dart' deferred as component1;
+import 'component2.dart' deferred as component2;
 
 void main() {
   runApp(MyApp());
@@ -15,12 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Deferred Components Example',
       theme: ThemeData(
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'PandaViewatron5000'),
+      home: MyHomePage(title: 'Panda Viewatron 5000'),
     );
   }
 }
@@ -48,13 +50,31 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Loads the split AOT library, and sets the widget to [PandaScreen]
   Future<void> testload() async {
-    return module.loadLibrary().then((_) {
-      setState(() {
-        int i = module.add(_counter, 20);
-        _counter = i;
-        dynamicWidget = module.PandaScreen();
-      });
-    });
+    if (_counter < 100) {
+      return component1.loadLibrary()
+        .then((_) {
+          setState(() {
+            int i = component1.add(_counter, 20);
+            _counter = i;
+            dynamicWidget = component1.PandaScreen();
+          });
+        }, onError: (e) {
+            print(e.toString());
+          }
+        );
+    } else {
+      return component2.loadLibrary()
+        .then((_) {
+          setState(() {
+            int i = component2.multiply(_counter, 2);
+            _counter = i;
+            dynamicWidget = component2.MultiPandaScreen();
+          });
+        }, onError: (e) {
+            print(e.toString());
+          }
+        );
+    }
   }
 
   @override
@@ -66,17 +86,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Stack(
           children: <Widget>[
-            Image.asset('customassets/bamboo.jpeg', fit: BoxFit.cover),
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('customassets/bamboo.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'PandaPoints:',
+                  'Panda Points:',
                   style: TextStyle(fontSize: 40, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  '(the more pandas, the higher!)',
+                  '(the more panda points, the better!)',
                   style: TextStyle(fontSize: 15, color: Colors.white),
                   textAlign: TextAlign.center,
                 ),

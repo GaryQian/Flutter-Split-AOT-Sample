@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+20
+version: 1.0.0+22
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -48,8 +48,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - customassets/bamboo.jpeg
-  #   - images/a_dot_ham.jpeg
+    - customassets/bamboo.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -76,3 +75,15 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  deferred-components:
+    - name: component1
+      libraries:
+        - package:splitaot/component1.dart
+      assets:
+        - customassets/panda.jpg
+    - name: component2
+      libraries:
+        - package:splitaot/component2.dart
+      assets:
+        - customassets/multiple_pandas.jpg

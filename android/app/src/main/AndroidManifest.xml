@@ -6,7 +6,7 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
-        android:name="io.flutter.SplitApplication"
+        android:name="io.flutter.app.FlutterPlayStoreSplitApplication"
         android:label="splitaot"
         android:icon="@mipmap/ic_launcher"
         android:extractNativeLibs="false">
@@ -44,5 +44,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="io.flutter.embedding.engine.deferredcomponents.DeferredComponentManager.loadingUnitMapping"
+            android:value="2:component1,3:component2" />
     </application>
 </manifest>

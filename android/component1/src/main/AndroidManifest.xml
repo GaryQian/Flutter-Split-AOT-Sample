@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.SplitModule">
+    package="com.example.component1">
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/SplitModuleName">
+        dist:title="@string/component1Name">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>

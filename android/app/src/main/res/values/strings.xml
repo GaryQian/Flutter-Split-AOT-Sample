@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Begin Split dynamic features strings.-->
-    <string name="SplitModuleName">SplitModule</string>
-    <string name="loadingUnit2">SplitModule</string>
-    <!--End Split dynamic features strings.-->
+    <!--Begin Deferred Components strings.-->
+    <string name="component1Name">component1</string>
+    <string name="component2Name">component2</string>
+    <!--End Deferred Components strings.-->
 </resources>
 
